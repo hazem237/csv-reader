@@ -1,19 +1,22 @@
+/* 
+    Object maker function , will take the array of user and make an object from it
+*/
+let objmaker = (arr) => {
+    let keyArr = ['UserName', 'BirthDate', 'Address', 'MobileNumber', 'Gender'];
+    let objArray = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let indexArray = [];
+        indexArray.push(keyArr[i]);
+        indexArray.push(arr[i]);
+        objArray.push(indexArray);
+    }
+    return objArray;
+}
+
 var data = require("fs").readFileSync("./users.csv", "utf8");
 data = data.split("\r\n");
 for (let i in data) { data[i] = data[i].split(","); }
-
-let objmaker = (arr) => {
-    let keyArr = ['UserName', 'BirthDate', 'Address', 'MobileNumber', 'Gender'];
-    let BigArray = [];
-
-    for (let i = 0; i < arr.length; i++) {
-        let objArray = [];
-        objArray.push(keyArr[i]);
-        objArray.push(arr[i]);
-        BigArray.push(objArray);
-    }
-    return BigArray;
-}
 
 let users = [];
 for (let i = 1; i < data.length; i++) {
@@ -21,3 +24,4 @@ for (let i = 1; i < data.length; i++) {
     users.push(obj);
 }
 
+console.log(users[1].UserName); // will print shaymaa , it worked !
